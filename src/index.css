@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  --color-primary: #000000;
+  --color-secondary: #00BFFF;
+  --color-accent: #FF0033;
+  
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF;
+  }
+  to {
+    text-shadow: 0 0 20px #00BFFF, 0 0 30px #00BFFF, 0 0 40px #00BFFF;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-sans antialiased selection:bg-secondary selection:text-black;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-extrabold tracking-tight uppercase;
+  }
+}
+
+.glass {
+  @apply bg-white/[0.04] backdrop-blur-xl border border-secondary/15;
+}
+
+.glow-blue {
+  background: radial-gradient(circle, rgba(0, 191, 255, 0.15) 0%, transparent 70%);
+}
+
+.glow-red {
+  background: radial-gradient(circle, rgba(255, 0, 51, 0.1) 0%, transparent 70%);
+}
+
+.hero-text {
+  background: linear-gradient(to bottom, #fff 0%, #aaa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.neon-border {
+  @apply border border-secondary/30 hover:border-secondary shadow-[0_0_15px_rgba(0,191,255,0.1)] hover:shadow-[0_0_25px_rgba(0,191,255,0.3)] transition-all duration-500;
+}
+
+.neon-text {
+  @apply text-secondary drop-shadow-[0_0_8px_rgba(0,191,255,0.8)];
+}
+
+.accent-glow {
+  @apply shadow-[0_0_20px_rgba(255,0,51,0.4)];
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
